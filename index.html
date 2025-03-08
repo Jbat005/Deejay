@@ -1,12 +1,20 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>Jean Batista Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;900&family=Open+Sans:wght@400;600&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Include Chart.js for the interactive chart in Card #3 -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
   <style>
     :root {
       --bg-color: #000000;
@@ -55,9 +63,8 @@
     }
     a:hover {
       color: var(--primary-color);
-      background: var(--hover-gradient);
+      background: #000000;
       -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
     }
 
     /* Header & Navigation */
@@ -83,7 +90,7 @@
     }
     header .contact-info {
       font-family: 'Montserrat', sans-serif;
-      font-size: .5em;
+      font-size: 0.5em;
       font-weight: 500;
       background: #ffffff;
       background-size: 100% auto;
@@ -112,7 +119,7 @@
       margin-bottom: 10px;
     }
     .hero p {
-      font-size: .9em;
+      font-size: 0.9em;
       max-width: 1000px;
       margin-bottom: 10px;
       color: var(--secondary-text);
@@ -139,6 +146,7 @@
     @media (max-width: 600px) {
       .project-grid {
         height: 2150px;
+        /* or remove this fixed height if you don't truly need it */
       }
     }
 
@@ -160,7 +168,8 @@
       transform-style: preserve-3d;
       transition: transform 0.6s ease;
     }
-    .card-front, .card-back {
+    .card-front,
+    .card-back {
       position: absolute;
       width: 100%;
       backface-visibility: hidden;
@@ -186,11 +195,11 @@
     }
     /* Active state: enlarge card and flip inner content */
     .card.active {
-      position: fixed;
+      position: center;
       top: 50%;
       left: 50%;
-      width: 300px; /* adjust as needed */
-      transform: translate(-50%, -50%) scale(1.5);
+      width: 700px; /* adjust as needed */
+      transform: translate(-50%) scale(1.2);
       z-index: 1001;
     }
     .card.active .card-inner {
@@ -223,6 +232,22 @@
       }
     }
 
+    /* Highlight link on card back */
+    .card-back a {
+      display: inline-block;
+      padding: 6px 12px;
+      margin-top: 10px;
+      background: linear-gradient(90deg, #1eff78, #ffcc33);
+      color: #000;
+      border-radius: 5px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+    .card-back a:hover {
+      color: #333;
+    }
+
     /* Overlay to dim the background */
     #overlay {
       position: fixed;
@@ -234,6 +259,28 @@
       display: none;
       z-index: 1000;
     }
+
+    /* Canvas in Card 3: no explicit width/height. Let Chart.js handle aspect ratio. */
+    #myPortfolioChart {
+      display: block;
+      margin: 15px auto 0 auto;
+      max-width: 100%;
+      border: 1px solid #333;
+      border-radius: 6px;
+      background: rgba(0, 0, 0, 0.675);
+    }
+
+    @keyframes iridescentAnimation {
+      0% {
+        background-position: 0%;
+      }
+      50% {
+        background-position: 100%;
+      }
+      100% {
+        background-position: 0%;
+      }
+    }
   </style>
 </head>
 <body>
@@ -243,7 +290,8 @@
   <!-- Header & Navigation -->
   <header>
     <div class="logo">
-      Jean Batista, B.A - Data Analytics <span class="contact-info">New York | batistajean78@gmail.com</span>
+      Jean Batista, B.A - Data Analytics
+      <span class="contact-info">New York | batistajean78@gmail.com</span>
     </div>
   </header>
 
@@ -252,7 +300,7 @@
     <h1>Bachelors in Economics at CUNY City College</h1>
     <p>Dec 2023. New York</p>
     <p>Relevant Coursework: Statistics, Python for Business Analytics, Quantitative Finance, Financial Analysis.</p>
-    <hr style="width: 20%; border: .5px solid var(--text-color); margin: 40px 0;">
+    <hr style="width: 20%; border: 0.5px solid var(--text-color); margin: 40px 0" />
     <h1>Masters in Data Science at Juniata College</h1>
     <p>In progress, Expected Graduation May 2026. Pennsylvania (online)</p>
     <p>Relevant Coursework: Statistics, Computer Science, Linear Algebra.</p>
@@ -265,14 +313,18 @@
       <div class="card">
         <div class="card-inner">
           <div class="card-front">
-            <img src="template.png" alt="Project 1">
+            <img src="template.png" alt="Project 1" />
             <p>Click to show more.</p>
           </div>
           <div class="card-back">
             <h3>Stocks by Bots</h3>
             <p>
-              <a href="https://stocksbybots.com" target="_blank" onclick="event.stopPropagation()">
-                Visit Stocks by Bots.
+              <a
+                href="https://stocksbybots.com"
+                target="_blank"
+                onclick="event.stopPropagation()"
+              >
+                Visit Stocks by Bots
               </a>
             </p>
             <button class="close-card">Close</button>
@@ -283,14 +335,18 @@
       <div class="card">
         <div class="card-inner">
           <div class="card-front">
-            <img src="template2.png" alt="Project 2">
+            <img src="template2.png" alt="Project 2" />
             <p>Click to show more.</p>
           </div>
           <div class="card-back">
-            <h3>Pizza Restuarant Data Analysis </h3>
+            <h3>Pizza Restaurant Data Analysis</h3>
             <p>
-              <a href="http://jbatistdata.com/" target="_blank" onclick="event.stopPropagation()">
-                Visit Data Analysis website.
+              <a
+                href="http://jbatistdata.com/"
+                target="_blank"
+                onclick="event.stopPropagation()"
+              >
+                Data Analysis Webpage
               </a>
             </p>
             <button class="close-card">Close</button>
@@ -301,12 +357,19 @@
       <div class="card">
         <div class="card-inner">
           <div class="card-front">
-            <img src="template3.png" alt="Project 3">
+            <img src="template3.png" alt="Project 3" />
             <p>Click to show more.</p>
           </div>
           <div class="card-back">
             <h3>Track my stock portfo</h3>
-            <p>Details about Project 3...</p>
+            <!-- We'll replace this text dynamically below -->
+            <p id="portfolioDescription">
+              This chart shows combined weighted returns of 8 stocks over 2 years.
+            </p>
+
+            <!-- Canvas (no width/height) -->
+            <canvas id="myPortfolioChart"></canvas>
+
             <button class="close-card">Close</button>
           </div>
         </div>
@@ -316,39 +379,256 @@
 
   <script>
     // Select all cards and the overlay
-    const cards = document.querySelectorAll('.card');
-    const overlay = document.getElementById('overlay');
+    const cards = document.querySelectorAll(".card");
+    const overlay = document.getElementById("overlay");
+
+    // Portfolio tickers/weights for Card #3
+    const portfolioTickers = {
+      NVDA: 0.4,
+      TSLA: 0.1,
+      NVR: 0.19,
+      MRNA: 0.12,
+      BLDR: 0.11,
+      CRWD: 0.04,
+      TGRP: 0.02,
+      ENPH: 0.02
+    };
+
+    // S&P 500 Ticker (Yahoo Finance often uses ^GSPC)
+    const sp500Ticker = "^GSPC";
+
+    // Chart instance (global), so we can destroy/rebuild
+    let myPortfolioChartInstance = null;
 
     // When a card is clicked, add the active class and show the overlay
-    cards.forEach(card => {
-      card.addEventListener('click', function(e) {
-        if (!card.classList.contains('active')) {
-          card.classList.add('active');
-          overlay.style.display = 'block';
+    cards.forEach((card) => {
+      card.addEventListener("click", function (e) {
+        if (!card.classList.contains("active")) {
+          card.classList.add("active");
+          overlay.style.display = "block";
           e.stopPropagation();
+
+          // If this is "Track my stock portfo" card, fetch & render the chart
+          const isCardThree = card
+            .querySelector("h3")
+            ?.textContent?.includes("Track my stock portfo");
+          if (isCardThree) {
+            renderPortfolioChart();
+          }
         }
       });
     });
 
-    // Clicking the overlay will remove the active state from any card and hide the overlay
-    overlay.addEventListener('click', function() {
-      const activeCard = document.querySelector('.card.active');
+    // Clicking the overlay removes the active state and hides it
+    overlay.addEventListener("click", function () {
+      const activeCard = document.querySelector(".card.active");
       if (activeCard) {
-        activeCard.classList.remove('active');
+        activeCard.classList.remove("active");
       }
-      overlay.style.display = 'none';
+      overlay.style.display = "none";
     });
 
-    // Allow closing the card by clicking the "Close" button on the back face
-    const closeButtons = document.querySelectorAll('.close-card');
-    closeButtons.forEach(button => {
-      button.addEventListener('click', function(e) {
-        const card = button.closest('.card');
-        card.classList.remove('active');
-        overlay.style.display = 'none';
+    // Close button on the card-back
+    const closeButtons = document.querySelectorAll(".close-card");
+    closeButtons.forEach((button) => {
+      button.addEventListener("click", function (e) {
+        const card = button.closest(".card");
+        card.classList.remove("active");
+        overlay.style.display = "none";
         e.stopPropagation();
       });
     });
+
+    // Utility: fetch daily closes for a single ticker
+    async function fetchTickerData(ticker, startDate) {
+      const url = `https://my-vercel-api-lx6f.vercel.app/api/stocks/${ticker}?start=${startDate.toISOString()}`;
+      try {
+        const response = await fetch(url);
+        if (!response.ok) {
+          console.error("Error fetching data for", ticker, response.statusText);
+          return null;
+        }
+        return await response.json();
+      } catch (err) {
+        console.error("Error fetching stock data for", ticker, err);
+        return null;
+      }
+    }
+
+    // Fetch & render chart for card #3
+    async function renderPortfolioChart() {
+      // 2 years from now
+      const endDate = new Date();
+      const startDate = new Date();
+      startDate.setFullYear(2023, 10, 15); 
+
+      // dailyValues[YYYY-MM-DD] = sum of weighted close for portfolio
+      const dailyValues = {};
+
+      // 1) Fetch data for each ticker in the custom portfolio
+      for (const ticker in portfolioTickers) {
+        const weight = portfolioTickers[ticker];
+        const stockData = await fetchTickerData(ticker, startDate);
+        if (!stockData?.prices) continue;
+
+        stockData.prices.forEach((priceObj) => {
+          const dateOnly = priceObj.date.split("T")[0];
+          if (!dailyValues[dateOnly]) {
+            dailyValues[dateOnly] = 0;
+          }
+          dailyValues[dateOnly] += priceObj.close * weight;
+        });
+      }
+
+      // 2) Fetch data for S&P 500
+      const sp500DailyValues = {};
+      const sp500Data = await fetchTickerData(sp500Ticker, startDate);
+      if (sp500Data?.prices) {
+        sp500Data.prices.forEach((priceObj) => {
+          const dateOnly = priceObj.date.split("T")[0];
+          sp500DailyValues[dateOnly] = priceObj.close; // No weighting
+        });
+      }
+
+      // Combine & sort dates
+      const allDatesSet = new Set([
+        ...Object.keys(dailyValues),
+        ...Object.keys(sp500DailyValues)
+      ]);
+      const sortedDates = Array.from(allDatesSet).sort(
+        (a, b) => new Date(a) - new Date(b)
+      );
+      if (sortedDates.length === 0) return;
+
+      // 3) Build arrays of portfolio returns & SP500 returns
+      const firstPortfolioVal = dailyValues[sortedDates[0]] || 1;
+      const portfolioReturns = [];
+      const sp500Returns = [];
+
+      const firstSP500Val =
+        sp500DailyValues[sortedDates[0]] !== undefined
+          ? sp500DailyValues[sortedDates[0]]
+          : 1;
+
+      sortedDates.forEach((dateStr) => {
+        // Portfolio
+        const val = dailyValues[dateStr] !== undefined ? dailyValues[dateStr] : firstPortfolioVal;
+        const portfolioPct = ((val - firstPortfolioVal) / firstPortfolioVal) * 100;
+        portfolioReturns.push(portfolioPct);
+
+        // S&P 500
+        const spVal =
+          sp500DailyValues[dateStr] !== undefined
+            ? sp500DailyValues[dateStr]
+            : firstSP500Val;
+        const spPct = ((spVal - firstSP500Val) / firstSP500Val) * 100;
+        sp500Returns.push(spPct);
+      });
+
+      // 4) Destroy old chart if it exists (avoids duplication)
+      if (myPortfolioChartInstance) {
+        myPortfolioChartInstance.destroy();
+      }
+
+      // 5) Build the chart
+      const ctx = document.getElementById("myPortfolioChart").getContext("2d");
+      myPortfolioChartInstance = new Chart(ctx, {
+  type: "line",
+  data: {
+    labels: sortedDates,
+    datasets: [
+      {
+        label: "My Portfolio (%)",
+        data: portfolioReturns,
+        borderColor: "#64ffda",
+        backgroundColor: "rgba(100, 255, 218, 0.2)",
+        fill: true,
+        tension: 0.3,
+        pointRadius: 0,        // <-- Hide points
+        pointHoverRadius: 0,   // <-- No hover points
+      },
+      {
+        label: "S&P 500 (%)",
+        data: sp500Returns,
+        borderColor: "#FFA500",
+        backgroundColor: "rgba(255,165,0,0.2)",
+        fill: true,
+        tension: 0.3,
+        pointRadius: 0,        // <-- Hide points
+        pointHoverRadius: 0,   // <-- No hover points
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: true,
+    aspectRatio: 1.6,
+    scales: {
+      y: {
+        title: { display: true, text: "% Return" },
+        ticks: {
+          callback: function (value) {
+            return value.toFixed(2) + "%";
+          }
+        }
+      },
+      x: {
+        title: { display: true, text: "Date" }
+      }
+    }
+  }
+});
+
+
+      // 6) Update the text below the chart: final returns, weeks, difference, etc.
+      updatePortfolioDescription(
+        portfolioReturns,
+        sp500Returns,
+        sortedDates[0],
+        sortedDates[sortedDates.length - 1]
+      );
+    }
+
+    function updatePortfolioDescription(portReturns, spReturns, startStr, endStr) {
+      const descElem = document.getElementById("portfolioDescription");
+      if (!descElem) return;
+
+      // final numbers: last element in array
+      const finalPort = portReturns[portReturns.length - 1] || 0;
+      const finalSP = spReturns[spReturns.length - 1] || 0;
+      const diff = finalPort - finalSP;
+
+      // how many weeks between startStr, endStr?
+      const startDate = new Date(startStr);
+      const endDate = new Date(endStr);
+      const msInWeek = 7 * 24 * 60 * 60 * 1000;
+      const totalWeeks = Math.round((endDate - startDate) / msInWeek);
+      if (totalWeeks <= 0) {
+        // fallback
+        descElem.textContent = `No valid date range.`;
+        return;
+      }
+
+      // average per week
+      const avgPortPerWeek = finalPort / totalWeeks;
+      const avgDiffPerWeek = diff / totalWeeks;
+      // Build a friendly message
+      // e.g. "My portfolio returns are 25.42% over the last 104 weeks. 
+      // That's an average of 0.24% per week. 
+      // The S&P 500 is 15.14%. 
+      // My portfolio has outperformed the general market by 10.28%, 
+      // or an average of 0.10% per week."
+
+      const msg = `
+        My portfolio returns are ${finalPort.toFixed(2)}% over the last ${totalWeeks} weeks.
+        That's an average of ${avgPortPerWeek.toFixed(2)}% per week.
+        The S&P 500 is ${finalSP.toFixed(2)}%.
+        My portfolio has outperformed the general market by ${diff.toFixed(2)}%,
+        or an average of ${avgDiffPerWeek.toFixed(2)}% per week.
+      `;
+
+      descElem.textContent = msg.trim();
+    }
   </script>
 </body>
 </html>
