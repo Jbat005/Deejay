@@ -30,9 +30,10 @@
       background-size: cover;
       opacity: 0.15;
       pointer-events: none;
-      z-index: -1;
+      z-index: 0;
     }
 
+    /* Universal Reset */
     * {
       margin: 0;
       padding: 0;
@@ -119,7 +120,7 @@
     
     /* Projects Section */
     .projects {
-      padding: 60px 20px;
+      padding: 60px 20px 100px; /* extra bottom padding for spacing */
       text-align: center;
     }
     .projects h2 {
@@ -135,10 +136,13 @@
       max-width: 1000px;
       margin: 0 auto;
     }
+    @media (max-width: 600px) {
+      .project-grid {
+        height: 2150px;
+      }
+    }
 
-    /* ---------------------------
-       Card and Animation Styles
-       --------------------------- */
+    /* Card and Animation Styles */
     .card {
       perspective: 1000px;
       cursor: pointer;
@@ -192,7 +196,33 @@
     .card.active .card-inner {
       transform: rotateY(180deg);
     }
-    
+
+    /* MOBILE: single column layout & remove scale overflow */
+    @media (max-width: 600px) {
+      /* Force one column in the project grid */
+      .project-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      /* Remove hover scale & shadow on small screens */
+      .card:not(.active):hover {
+        transform: none;
+        box-shadow: none;
+      }
+
+      /* Keep the flip but remove fixed positioning & scaling when active */
+      .card.active {
+        position: static;
+        transform: none;
+        width: 100%;
+        margin: 0 auto;
+      }
+      .card.active .card-inner {
+        transform: rotateY(180deg);
+      }
+    }
+
     /* Overlay to dim the background */
     #overlay {
       position: fixed;
@@ -240,7 +270,11 @@
           </div>
           <div class="card-back">
             <h3>Stocks by Bots</h3>
-            <p>https://stocksbybots.com</p>
+            <p>
+              <a href="https://stocksbybots.com" target="_blank" onclick="event.stopPropagation()">
+                Visit Stocks by Bots.
+              </a>
+            </p>
             <button class="close-card">Close</button>
           </div>
         </div>
@@ -253,8 +287,12 @@
             <p>Click to show more.</p>
           </div>
           <div class="card-back">
-            <h3>Project 2 Title</h3>
-            <p>Details about Project 2...</p>
+            <h3>Pizza Restuarant Data Analysis </h3>
+            <p>
+              <a href="http://jbatistdata.com/" target="_blank" onclick="event.stopPropagation()">
+                Visit Data Analysis website.
+              </a>
+            </p>
             <button class="close-card">Close</button>
           </div>
         </div>
@@ -267,7 +305,7 @@
             <p>Click to show more.</p>
           </div>
           <div class="card-back">
-            <h3>Project 3 Title</h3>
+            <h3>Track my stock portfo</h3>
             <p>Details about Project 3...</p>
             <button class="close-card">Close</button>
           </div>
@@ -275,7 +313,6 @@
       </div>
     </div>
   </section>
-
 
   <script>
     // Select all cards and the overlay
