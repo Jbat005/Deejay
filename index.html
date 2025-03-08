@@ -1,39 +1,37 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>3D Print Haven</title>
+  <title>Jean Batista Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-
   <style>
     :root {
       --bg-color: #000000;
-      --light-bg: #000000ce;
-      --light-bg2: #000000ec;
-      --primary-color: #ff6f61;
-      --hover-gradient: linear-gradient(90deg, #ff6f61, #ffcc33);
+      --light-bg: #0b0b0bd6;
+      --light-bg2: #42424256;
+      --primary-color: #1effd2;
+      --hover-gradient: linear-gradient(90deg, #1eff78, #ffcc33);
       --text-color: #f5f5f5;
       --secondary-text: #b0b0b0;
     }
-
-    /* Overlay background using a pseudo-element */
-    body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: url('background.jpg') no-repeat center center;
-  background-size: cover;
-  opacity: 0.15; /* Adjust opacity as needed */
-  pointer-events: none;
-  z-index: -1;
-}
-
+    
+    /* Background overlay for the entire page */
+    body::after {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('background.jpg') no-repeat center center;
+      background-size: cover;
+      opacity: 0.15;
+      pointer-events: none;
+      z-index: -1;
+    }
 
     * {
       margin: 0;
@@ -61,266 +59,259 @@
       -webkit-text-fill-color: transparent;
     }
 
-    /* ----------------------------------
-       Header & Navigation
-    ------------------------------------- */
+    /* Header & Navigation */
     header {
-      display: flex;
-      justify-content: space-between;
+      text-align: center;
       align-items: center;
       padding: 15px 30px;
       background: var(--light-bg);
       position: sticky;
       top: 0;
       z-index: 1000;
+      margin-bottom: 20px;
     }
     header .logo {
       font-family: 'Montserrat', sans-serif;
       font-size: 2em;
-      font-weight: 900;
-      background: linear-gradient(90deg, #ff6f61, #ffcc33, #66ffcc, #ff6f61);
+      font-weight: 500;
+      background: linear-gradient(90deg, #ffffff, #eef771);
       background-size: 200% auto;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      animation: iridescentAnimation 3s linear infinite;
+      animation: iridescentAnimation 2s linear infinite;
     }
     header .contact-info {
-      font-size: 0.7em;
-      margin-left: 10px;
-      background: none;
-      -webkit-background-clip: initial;
-      -webkit-text-fill-color: initial;
-      color: var(--primary-color);
+      font-family: 'Montserrat', sans-serif;
+      font-size: .5em;
+      font-weight: 500;
+      background: #ffffff;
+      background-size: 100% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
     @keyframes iridescentAnimation {
       0% { background-position: 0%; }
       50% { background-position: 100%; }
       100% { background-position: 0%; }
     }
-
-    .menu-button {
-      display: none;
-      background: none;
-      border: none;
-      font-size: 2rem;
-      color: var(--text-color);
-      cursor: pointer;
-    }
-
-    nav {
-      display: flex;
-    }
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 20px;
-    }
-    nav ul li a {
-      font-weight: 600;
-    }
-
-    /* Mobile Styles */
-    @media (max-width: 768px) {
-      .menu-button {
-        display: block;
-      }
-      nav {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100vh;
-        background: var(--light-bg2);
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        transform: translateY(-100%);
-        transition: transform 0.3s ease;
-      }
-      nav.active {
-        transform: translateY(0);
-      }
-      nav ul {
-        flex-direction: column;
-        gap: 30px;
-      }
-      nav ul li {
-        text-align: center;
-      }
-      /* Close icon styles */
-      .close-menu {
-        position: absolute;
-        top: 15px;
-        right: 30px;
-        font-size: 1.5em;
-        cursor: pointer;
-        color: var(--text-color);
-      }
-    }
-
-    /* ----------------------------------
-       Hero Section
-    ------------------------------------- */
+    
+    /* Hero Section */
     .hero {
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center;
-      padding: 80px 20px;
+      padding: 10px;
       background: url('3d-bg.jpg') no-repeat center/cover;
     }
     .hero h1 {
       font-family: 'Montserrat', sans-serif;
-      font-size: 3em;
-      margin-bottom: 20px;
+      font-size: 1.2em;
+      margin-bottom: 10px;
     }
     .hero p {
-      font-size: 1.2em;
-      max-width: 600px;
-      margin-bottom: 30px;
+      font-size: .9em;
+      max-width: 1000px;
+      margin-bottom: 10px;
       color: var(--secondary-text);
     }
-    .cta-btn {
-      padding: 15px 30px;
-      background: var(--primary-color);
-      color: var(--bg-color);
-      border: none;
-      border-radius: 5px;
-      font-size: 1em;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-    .cta-btn:hover {
-      background: var(--hover-gradient);
-    }
-
-    /* ----------------------------------
-       Products Section
-    ------------------------------------- */
-    .products {
+    
+    /* Projects Section */
+    .projects {
       padding: 60px 20px;
       text-align: center;
     }
-    .products h2 {
+    .projects h2 {
       font-family: 'Montserrat', sans-serif;
       font-size: 2.5em;
-      margin-bottom: 20px;
+      margin-bottom: 50px;
       color: var(--primary-color);
     }
-    .product-grid {
+    .project-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 20px;
-      max-width: 1200px;
+      max-width: 1000px;
       margin: 0 auto;
     }
-    .product {
-      background: var(--light-bg);
-      padding: 20px;
-      border-radius: 10px;
+
+    /* ---------------------------
+       Card and Animation Styles
+       --------------------------- */
+    .card {
+      perspective: 1000px;
+      cursor: pointer;
+      position: relative;
       transition: transform 0.3s ease;
     }
-    .product:hover {
-  transform: scale(1.05);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 1);
-}
-    .product img, .product video {
+    /* Hover effect on card when not active */
+    .card:not(.active):hover {
+      transform: scale(1.08);
+      box-shadow: 0 8px 16px rgba(255, 255, 255, 0.424);
+    }
+    .card-inner {
+      position: relative;
+      width: 100%;
+      transform-style: preserve-3d;
+      transition: transform 0.6s ease;
+    }
+    .card-front, .card-back {
+      position: absolute;
+      width: 100%;
+      backface-visibility: hidden;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .card-front {
+      background: var(--light-bg2);
+    }
+    .card-front img {
       width: 100%;
       border-radius: 10px;
-      margin-bottom: 15px;
     }
-    .product h3 {
-      margin-bottom: 10px;
-      font-family: 'Montserrat', sans-serif;
-    }
-    .product p {
-      color: var(--secondary-text);
+    .card-front p {
+      padding: 10px;
       font-size: 0.9em;
     }
-
-    /* ----------------------------------
-       Footer
-    ------------------------------------- */
-    .footer {
+    .card-back {
+      transform: rotateY(180deg);
+      background: var(--light-bg2);
       padding: 20px;
-      text-align: center;
-      background: var(--light-bg);
-      color: var(--secondary-text);
-      font-size: 0.9em;
+      color: var(--text-color);
+    }
+    /* Active state: enlarge card and flip inner content */
+    .card.active {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      width: 300px; /* adjust as needed */
+      transform: translate(-50%, -50%) scale(1.5);
+      z-index: 1001;
+    }
+    .card.active .card-inner {
+      transform: rotateY(180deg);
+    }
+    
+    /* Overlay to dim the background */
+    #overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.7);
+      display: none;
+      z-index: 1000;
     }
   </style>
 </head>
 <body>
+  <!-- Overlay for dimming the background -->
+  <div id="overlay"></div>
 
   <!-- Header & Navigation -->
   <header>
     <div class="logo">
-      DeeJays 3D Shop <span class="contact-info">New York | (123) 456 7869</span>
+      Jean Batista, B.A - Data Analytics <span class="contact-info">New York | batistajean78@gmail.com</span>
     </div>
-    <button class="menu-button" id="menuToggle" aria-label="Toggle Navigation">☰</button>
-    <nav id="navMenu">
-      <div class="close-menu" id="closeMenu">✕</div>
-      <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Products</a></li>
-        <li><a href="#">Custom Orders</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Contact</a></li>
-      </ul>
-    </nav>
   </header>
 
   <!-- Hero Section -->
   <section class="hero">
-    <h1>Transforming Ideas into 3D Reality</h1>
-    <p>Look at work below, buy products or contact for requests.</p>
-    <button class="cta-btn" onclick="window.location.href='#products'">Explore Our Creations</button>
+    <h1>Bachelors in Economics at CUNY City College</h1>
+    <p>Dec 2023. New York</p>
+    <p>Relevant Coursework: Statistics, Python for Business Analytics, Quantitative Finance, Financial Analysis.</p>
+    <hr style="width: 20%; border: .5px solid var(--text-color); margin: 40px 0;">
+    <h1>Masters in Data Science at Juniata College</h1>
+    <p>In progress, Expected Graduation May 2026. Pennsylvania (online)</p>
+    <p>Relevant Coursework: Statistics, Computer Science, Linear Algebra.</p>
   </section>
 
-  <!-- Products Section -->
-  <section class="products" id="products">
-    <h2>Featured Creations</h2>
-    <div class="product-grid">
-      <div class="product">
-        <video width="100%" controls>
-          <source src="rose.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-        <h3>Iridescent Rose</h3>
-        <p>Delicately crafted 3D printed rose that never wilts.</p>
+  <!-- Projects Section -->
+  <section class="projects" id="projects">
+    <div class="project-grid">
+      <!-- Card 1 -->
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front">
+            <img src="template.png" alt="Project 1">
+            <p>Click to show more.</p>
+          </div>
+          <div class="card-back">
+            <h3>Stocks by Bots</h3>
+            <p>https://stocksbybots.com</p>
+            <button class="close-card">Close</button>
+          </div>
+        </div>
       </div>
-      <div class="product">
-        <img src="3d-car.jpg" alt="3D Printed Car">
-        <h3>Futuristic Car</h3>
-        <p>Intricately designed 3D printed car model.</p>
+      <!-- Card 2 -->
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front">
+            <img src="template2.png" alt="Project 2">
+            <p>Click to show more.</p>
+          </div>
+          <div class="card-back">
+            <h3>Project 2 Title</h3>
+            <p>Details about Project 2...</p>
+            <button class="close-card">Close</button>
+          </div>
+        </div>
       </div>
-      <div class="product">
-        <img src="vase.jpg" alt="3D Printed Art">
-        <h3>Gothic Rose</h3>
-        <p>Perfect for modern spaces.</p>
+      <!-- Card 3 -->
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front">
+            <img src="template3.png" alt="Project 3">
+            <p>Click to show more.</p>
+          </div>
+          <div class="card-back">
+            <h3>Project 3 Title</h3>
+            <p>Details about Project 3...</p>
+            <button class="close-card">Close</button>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <p>&copy; 2025 3D Print Haven. All Rights Reserved.</p>
-  </footer>
 
   <script>
-    const menuToggle = document.getElementById('menuToggle');
-    const closeMenu = document.getElementById('closeMenu');
-    const navMenu = document.getElementById('navMenu');
+    // Select all cards and the overlay
+    const cards = document.querySelectorAll('.card');
+    const overlay = document.getElementById('overlay');
 
-    menuToggle.addEventListener('click', function(){
-      navMenu.classList.add('active');
+    // When a card is clicked, add the active class and show the overlay
+    cards.forEach(card => {
+      card.addEventListener('click', function(e) {
+        if (!card.classList.contains('active')) {
+          card.classList.add('active');
+          overlay.style.display = 'block';
+          e.stopPropagation();
+        }
+      });
     });
 
-    closeMenu.addEventListener('click', function(){
-      navMenu.classList.remove('active');
+    // Clicking the overlay will remove the active state from any card and hide the overlay
+    overlay.addEventListener('click', function() {
+      const activeCard = document.querySelector('.card.active');
+      if (activeCard) {
+        activeCard.classList.remove('active');
+      }
+      overlay.style.display = 'none';
+    });
+
+    // Allow closing the card by clicking the "Close" button on the back face
+    const closeButtons = document.querySelectorAll('.close-card');
+    closeButtons.forEach(button => {
+      button.addEventListener('click', function(e) {
+        const card = button.closest('.card');
+        card.classList.remove('active');
+        overlay.style.display = 'none';
+        e.stopPropagation();
+      });
     });
   </script>
-  
 </body>
 </html>
