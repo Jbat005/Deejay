@@ -18,10 +18,10 @@
   <style>
     :root {
       --bg-color: #000000;
-      --light-bg: #0b0b0bd6;
-      --light-bg2: #42424256;
+      --light-bg: #000000ce;
+      --light-bg2: #000000de;
       --primary-color: #1effd2;
-      --hover-gradient: linear-gradient(90deg, #1eff78, #ffcc33);
+      --hover-gradient: linear-gradient(90deg, #ffffff, #ffcc33);
       --text-color: #f5f5f5;
       --secondary-text: #b0b0b0;
     }
@@ -34,7 +34,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: url('background.jpg') no-repeat center center;
+      background: #ffffff;
       background-size: cover;
       opacity: 0.15;
       pointer-events: none;
@@ -52,12 +52,12 @@
       font-family: 'Open Sans', sans-serif;
       background: var(--bg-color);
       color: var(--text-color);
-      line-height: 1.6;
+      line-height: 1.65;
     }
 
     a {
       text-decoration: none;
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       color: var(--text-color);
       transition: color 0.2s;
     }
@@ -81,7 +81,7 @@
     header .logo {
       font-family: 'Montserrat', sans-serif;
       font-size: 2em;
-      font-weight: 500;
+      font-weight: 550;
       background: linear-gradient(90deg, #ffffff, #eef771);
       background-size: 200% auto;
       -webkit-background-clip: text;
@@ -97,6 +97,43 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
+
+    header a.about-me-btn {
+  position: fixed;
+  top: 15px;
+  right: 30px;
+  font-size: 1.2em;
+  font-weight: 600;
+  padding: 10px 20px;
+  background: white;
+  border-radius: 5px;
+  transition: background 0.3s ease;
+}
+
+header a.about-me-btn:hover {
+  background: var(--hover-gradient);
+  color: #000000;
+}
+
+/* Style the About Me button */
+.about-me-btn {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.2em;
+  font-weight: 600;
+  color: black;
+  margin-left: 20px;
+  background: var(--primary-color);
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background 0.35s ease;
+}
+
+.about-me-btn:hover {
+  background: var(--hover-gradient);
+  color: #000000;
+}
+
+
     @keyframes iridescentAnimation {
       0% { background-position: 0%; }
       50% { background-position: 100%; }
@@ -192,16 +229,20 @@
       background: var(--light-bg2);
       padding: 20px;
       color: var(--text-color);
+      
     }
+    
+    
+
     /* Active state: enlarge card and flip inner content */
     .card.active {
-      position: center;
-      top: 50%;
-      left: 50%;
-      width: 700px; /* adjust as needed */
-      transform: translate(-50%) scale(1.2);
-      z-index: 1001;
-    }
+  position: fixed;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1.2);
+  width: 700px; /* adjust as needed */
+  z-index: 1001;
+}
     .card.active .card-inner {
       transform: rotateY(180deg);
     }
@@ -245,7 +286,7 @@
       transition: background 0.3s ease, color 0.3s ease;
     }
     .card-back a:hover {
-      color: #333;
+      color: #000000;
     }
 
     /* Overlay to dim the background */
@@ -293,6 +334,7 @@
       Jean Batista, B.A - Data Analytics
       <span class="contact-info">New York | batistajean78@gmail.com</span>
     </div>
+    <a href="about.html" class="about-me-btn">About me</a> 
   </header>
 
   <!-- Hero Section -->
@@ -302,7 +344,7 @@
     <p>Relevant Coursework: Statistics, Python for Business Analytics, Quantitative Finance, Financial Analysis.</p>
     <hr style="width: 20%; border: 0.5px solid var(--text-color); margin: 40px 0" />
     <h1>Masters in Data Science at Juniata College</h1>
-    <p>In progress, Expected Graduation May 2026. Pennsylvania (online)</p>
+    <p>Expected Graduation May 2026. Pennsylvania (online)</p>
     <p>Relevant Coursework: Statistics, Computer Science, Linear Algebra.</p>
   </section>
 
@@ -318,12 +360,20 @@
           </div>
           <div class="card-back">
             <h3>Stocks by Bots</h3>
+            <p> -</p>
             <p>
-              Stocks by Bots is a free to use web application that uses machine learning to predict stock prices.
-              It has optimization of stock portfolios and tools for investments, written in Python.
-              Such as Monte Carlo simulations, and portfolio generations based on momentum and risk factors.
-              Users can create an account, then build and track their portfolios, and recieve recommendations based on their risk tolerance.
-              Aiming to complete the website with multiple trading strategies and a value averaging trade bot, aswell features such as news sentiment analysis and options trading.
+              <strong>Part 1: Statistical Modeling</strong> - Stocks by Bots is a web application that ranks stocks using statistical analysis of past performance. It utilizes the Yahoo Finance API to import data for the 500 leading publicly traded companies in the U.S. Using <strong>Numpy</strong> and <strong>Pandas</strong>, technical indicators are calculated to create a ranked list of the top 10 stocks showing the strongest relative momentum over the past 5 years.
+            </p>
+            <p>
+              -
+            <p>
+              <strong>Part 2: Web Development</strong> - Users can create an account, build portfolios, and track performance over time, receiving recommendations based on risk tolerance.
+            </p>
+            <p>
+              -
+            </p>
+            <p>
+              <strong>Part 3: Automated Trading</strong> - Users can import portfolios and apply <strong>Monte Carlo simulations</strong> to forecast future returns, receiving an optimal stock distribution based on the results. Future enhancements will include <strong>machine learning-based predictive models</strong>, additional <strong>trading strategies</strong>, and a <strong>value averaging trade bot</strong>.
             </p>
             <p>
               <a
@@ -335,7 +385,7 @@
               </a>
             </p>
             <button class="close-card">Close</button>
-          </div>
+          </div>          
         </div>
       </div>
       <!-- Card 2 -->
@@ -347,6 +397,13 @@
           </div>
           <div class="card-back">
             <h3>Pizza Restaurant Data Analysis</h3>
+            <ul>
+              <li>Organizes pizza resuarant data using SQL.</li>
+              <li>Prepare the data using Pandas library.</li>
+              <li>Aggregate the data to find patterns</li>
+              <li>Visualize patterns using Matplotlib and Plotly</li>
+              <li>Deploy a dashboard with interactive data using Dash.Plotly</li>
+            </ul>
             <p>
               <a
                 href="http://jbatistdata.com/"
@@ -627,14 +684,16 @@
       // or an average of 0.10% per week."
 
       const msg = `
-        My portfolio returns are ${finalPort.toFixed(2)}% over the last ${totalWeeks} weeks.
-        That's an average of ${avgPortPerWeek.toFixed(2)}% per week.
-        The S&P 500 is ${finalSP.toFixed(2)}%.
-        My portfolio has outperformed the general market by ${diff.toFixed(2)}%,
-        or an average of ${avgDiffPerWeek.toFixed(2)}% per week.
+        <ul>
+          <li>My portfolio returns are ${finalPort.toFixed(2)}% over the last ${totalWeeks} weeks.</li>
+          <li>That's an average of ${avgPortPerWeek.toFixed(2)}% per week.</li>
+          <li>The S&P 500 is ${finalSP.toFixed(2)}%.</li>
+          <li>My portfolio has outperformed the general market by ${diff.toFixed(2)}%,</li>
+          <li>or an average of ${avgDiffPerWeek.toFixed(2)}% per week.</li>
+        </ul>
       `;
 
-      descElem.textContent = msg.trim();
+      descElem.innerHTML = msg.trim();
     }
   </script>
 </body>

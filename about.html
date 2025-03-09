@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Jean Batista Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;900&family=Open+Sans:wght@400;600&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Include Chart.js for the interactive chart in Card #3 -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <style>
+    :root {
+      --bg-color: #000000;
+      --light-bg: #000000ce;
+      --light-bg2: #000000de;
+      --primary-color: #ffffff;
+      --hover-gradient: linear-gradient(90deg, #ffffff, #ffcc33);
+      --text-color: #f5f5f5;
+      --secondary-text: #b0b0b0;
+    }
+    
+    /* Background overlay for the entire page */
+    body::after {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #ffffff;
+      background-size: cover;
+      opacity: 0.15;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Universal Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background: var(--bg-color);
+      color: var(--text-color);
+      font-weight: 600;
+      font-size: 1rem;
+      line-height: 2;
+    }
+
+    a {
+      text-decoration: none;
+      font-size: 1.2rem;
+      color: rgb(76, 108, 212);
+      transition: color 0.2s;
+    }
+    a:hover {
+      color: var(--primary-color);
+      background: #000000;
+      -webkit-background-clip: text;
+    }
+
+    /* Header & Navigation */
+    header {
+      text-align: center;
+      align-items: center;
+      padding: 15px 30px;
+      background: var(--light-bg);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      margin-bottom: 20px;
+    }
+    header .logo {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2em;
+      font-weight: 550;
+      background: linear-gradient(90deg, #ffffff, #eef771);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: iridescentAnimation 2s linear infinite;
+    }
+    header .contact-info {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.5em;
+      font-weight: 500;
+      background: #ffffff;
+      background-size: 100% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    header a.about-me-btn {
+  position: fixed;
+  top: 15px;
+  right: 30px;
+  font-size: 1.2em;
+  font-weight: 600;
+  padding: 10px 20px;
+  background: var(--primary-color);
+  border-radius: 5px;
+  transition: background 0.3s ease;
+}
+
+header a.about-me-btn:hover {
+  background: var(--hover-gradient);
+  color: #000000;
+}
+
+/* Style the About Me button */
+.about-me-btn {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.2em;
+  font-weight: 600;
+  color: black;
+  margin-left: 20px;
+  background: var(--primary-color);
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background 0.35s ease;
+}
+
+.about-me-btn:hover {
+  background: var(--hover-gradient);
+  color: #000000;
+}
+
+
+    @keyframes iridescentAnimation {
+      0% { background-position: 0%; }
+      50% { background-position: 100%; }
+      100% { background-position: 0%; }
+    }
+    
+    /* Hero Section */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 10px;
+      background: url('3d-bg.jpg') no-repeat center/cover;
+    }
+    .hero h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.2em;
+      margin-bottom: 10px;
+    }
+    .hero p {
+      font-size: 0.9em;
+      max-width: 1000px;
+      margin-bottom: 10px;
+      color: var(--secondary-text);
+    }
+    
+  </style>
+</head>
+<body>
+  <!-- Overlay for dimming the background -->
+  <div id="overlay"></div>
+
+  <!-- Header & Navigation -->
+  <header>
+    <div class="logo">
+      Jean Batista, B.A - Data Analytics
+      <span class="contact-info">New York | batistajean78@gmail.com</span>
+    </div>
+    <a href="index.html" class="about-me-btn">Home</a> 
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>About Me</h1>
+    <p>Currently a full-time student making the shift from retail service and customer experience to data analytics work. Jean focuses on developing his programming and statistical skills, by working on projects that challenge his thought process and force him to look for solutions to new questions every day.</p>
+
+    <p>Jean received his B.A. in Economics from the City College of The City University of New York and has certifications from Google's Advanced Data Analytics Certification Program. During his degree, his favorite courses were Quantitative Finance and Python for Business Analytics, where he enjoyed developing the ability to perform real-world data analysis and machine learning using SQL, Python, and other business intelligence tools.</p>
+
+    <p>While Jean is studying towards his Data Science Masters, he is also fascinated in finance, marketing, and engineering. Beyond his current education, he would love to be mentored on the aspects of implementing strategies for solving problems that lead to high-performance results.</p>
+
+    <p>He is currently working on a web application that ranks stocks using statistical analysis of past performance, where users can build and customize portfolios, track performance over time, and receive recommendations based on Monte Carlo simulations that forecast future returns. Working on implementing machine learning-based predictive models, trading strategies, and a value averaging trade bot.</p>
+
+    <p>Proficiencies: Analytics & Data Engineering | Statistical Models | Business Growth Strategies Research | Root-Cause Analysis | Process Automation</p>
+
+    <h2>Contact Me</h2>
+    <p>If you’d like to get in touch with me, feel free to reach out via email at: <strong><a href="mailto:batistajean78@gmail.com">batistajean78@gmail.com</a></strong></p>
+    <p>You can also connect with me on LinkedIn: <a href="https://www.linkedin.com/in/jbatist005/" target="_blank">LinkedIn Profile</a></p>
+  </section>
+
+
+
+</body>
+</html>
